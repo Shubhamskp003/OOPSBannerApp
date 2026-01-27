@@ -1,84 +1,151 @@
 /**
- * OOPSBannerApp UC6 – Banner Display Application using Helper Methods
+ * OOPSBannerApp UC7 – Render OOPS Banner using Character Pattern Class
  *
- * Version History:
- *  - v1.0: Printed "OOPS" as plain text.
- *  - v2.0: Rendered "OOPS" as a banner using string concatenation (+).
- *  - v3.0: Refactored banner rendering using String.join().
- *  - v4.0: Used String array and loop to eliminate repetitive print statements.
- *  - v5.0: Used inline array initialization with String.join().
- *  - v6.0: Refactored banner logic into reusable helper methods
- *          following DRY and modular design principles.
+ * <p>
+ * This version introduces a dedicated inner static class {@code CharacterPattern}
+ * to encapsulate a character and its corresponding 7-line banner pattern.
+ * The banner rendering logic now retrieves patterns from these objects,
+ * improving modularity, reusability, and maintainability.
+ * </p>
  *
- * This class demonstrates method abstraction by separating
- * character pattern generation into dedicated helper methods.
+ * <p>
+ * OOPS Principles Demonstrated:
+ * <ul>
+ *   <li>Encapsulation</li>
+ *   <li>Abstraction</li>
+ *   <li>Modularity</li>
+ *   <li>Single Responsibility Principle</li>
+ * </ul>
+ * </p>
  *
  * @author Developer
- * @version 6.0
+ * @version 7.0
  */
 public class OOPSBannerApp {
 
+    /**
+     * Entry point of the application.
+     *
+     * <p>
+     * This method creates character pattern objects, assembles
+     * the "OOPS" banner row-by-row using stored patterns, and
+     * prints the final banner.
+     * </p>
+     *
+     * @param args command-line arguments (not used)
+     */
     public static void main(String[] args) {
 
-        // Get individual character patterns
-        String[] oPattern = getOPattern();
-        String[] pPattern = getPPattern();
-        String[] sPattern = getSPattern();
+        // Create CharacterPattern objects for required characters
+        CharacterPattern oPattern = new CharacterPattern(
+                'O',
+                new String[]{
+                        "*********",
+                        "*       *",
+                        "*       *",
+                        "*       *",
+                        "*       *",
+                        "*       *",
+                        "*********"
+                }
+        );
 
-        // Create banner lines by composing character patterns
-        String[] bannerLines = new String[7];
+        CharacterPattern pPattern = new CharacterPattern(
+                'P',
+                new String[]{
+                        "*********",
+                        "*       *",
+                        "*       *",
+                        "*********",
+                        "*        ",
+                        "*        ",
+                        "*        "
+                }
+        );
 
-        for (int i = 0; i < 7; i++) {
-            bannerLines[i] = String.join("  ",
-                    oPattern[i],
-                    oPattern[i],
-                    pPattern[i],
-                    sPattern[i]
-            );
+        CharacterPattern sPattern = new CharacterPattern(
+                'S',
+                new String[]{
+                        "*********",
+                        "*        ",
+                        "*        ",
+                        "*********",
+                        "        *",
+                        "        *",
+                        "*********"
+                }
+        );
+
+        // Array of CharacterPattern objects (O, O, P, S)
+        CharacterPattern[] wordPatterns = {
+                oPattern,
+                oPattern,
+                pPattern,
+                sPattern
+        };
+
+        // Build and print banner row by row
+        for (int row = 0; row < 7; row++) {
+
+            StringBuilder lineBuilder = new StringBuilder();
+
+            for (int col = 0; col < wordPatterns.length; col++) {
+                lineBuilder.append(wordPatterns[col].getPattern()[row]);
+
+                // Add spacing between characters (not after last)
+                if (col < wordPatterns.length - 1) {
+                    lineBuilder.append("  ");
+                }
+            }
+
+            System.out.println(lineBuilder.toString());
+        }
+    }
+
+    /**
+     * Inner static class that encapsulates a character
+     * and its corresponding banner pattern.
+     *
+     * <p>
+     * Each instance represents one character and stores
+     * its 7-line ASCII banner representation.
+     * </p>
+     */
+    private static class CharacterPattern {
+
+        /** The character represented by this pattern */
+        private final char character;
+
+        /** The 7-line banner pattern for the character */
+        private final String[] pattern;
+
+        /**
+         * Constructs a CharacterPattern with a character and its pattern.
+         *
+         * @param character the character to represent
+         * @param pattern   a 7-line banner pattern for the character
+         */
+        public CharacterPattern(char character, String[] pattern) {
+            this.character = character;
+            this.pattern = pattern;
         }
 
-        // Print banner using enhanced for loop
-        for (String line : bannerLines) {
-            System.out.println(line);
+        /**
+         * Returns the character represented by this pattern.
+         *
+         * @return the character
+         */
+        public char getCharacter() {
+            return character;
         }
-    }
 
-    // Helper method to build letter 'O' pattern
-    private static String[] getOPattern() {
-        return new String[] {
-                "*********",
-                "*       *",
-                "*       *",
-                "*       *",
-                "*       *",
-                "*       *",
-                "*********"
-        };
-    }
-
-    // Helper method to build letter 'P' pattern
-    private static String[] getPPattern() {
-        return new String[] {
-                "*********",
-                "*       *",
-                "*       *",
-                "*********",
-                "*        ",
-                "*        ",
-                "*        "
-        };
-    }
-
-    // Helper method to build letter 'S' pattern
-    private static String[] getSPattern() {
-        return new String[] {
-                "*********",
-                "*        ",
-                "*        ",
-                "*********",
-                "        *",
-                "        *",
-                "*********"
-        };
+        /**
+         * Returns the banner pattern for the character.
+         *
+         * @return a String array containing the banner pattern
+         */
+        public String[] getPattern() {
+            return pattern;
+        }
     }
 }
