@@ -1,78 +1,76 @@
-
 /**
- * OOPSBannerApp UC2 - OOPS Banner Display Application
+ * OOPSBannerApp UC3 – Banner Display Application using String.join()
  *
- * This class demonstrates a visual banner displaying the word "OOPS" using ASCII art
- * composed of asterisks (*) and spaces. The banner is printed to the console using
- * individual print statements for each line, creating a decorative text.
+ * Version History:
+ *  - v1.0: Printed "OOPS" as plain text.
+ *  - v2.0: Rendered "OOPS" as a banner using string concatenation (+).
+ *  - v3.0: Refactored banner rendering using String.join() to
+ *          improve memory efficiency and readability.
+ *
+ * This class demonstrates how String.join() can be used
+ * to efficiently construct multi-line ASCII art banners.
  *
  * @author Developer
- * @version 2.0
+ * @version 3.0
  */
-
 public class OOPSBannerApp {
-    /*
-        Main method to run banner display
-        Print each line of the OOPS banner to create visual effect
-        Using individual print statements for each line
-    */
+
     public static void main(String[] args) {
+
         // Line 1
-        System.out.println(
-                "*********" + "  " +
-                        "*********" + "  " +
-                        "*********" + "  " +
-                        "*********"
-        );
+        System.out.println(String.join("  ",
+                "*********",
+                "*********",
+                "*********",
+                "*********"
+        ));
 
         // Line 2
-        System.out.println(
-                "*       *" + "  " +
-                        "*       *" + "  " +
-                        "*       *" + "  " +
-                        "*        "
-        );
+        System.out.println(String.join("  ",
+                "*       *",
+                "*       *",
+                "*       *",
+                "*        "
+        ));
 
         // Line 3
-        System.out.println(
-                "*       *" + "  " +
-                        "*       *" + "  " +
-                        "*       *" + "  " +
-                        "*        "
-        );
+        System.out.println(String.join("  ",
+                "*       *",
+                "*       *",
+                "*       *",
+                "*        "
+        ));
 
         // Line 4
-        System.out.println(
-                "*       *" + "  " +
-                        "*       *" + "  " +
-                        "*********" + "  " +
-                        "*********"
-        );
+        System.out.println(String.join("  ",
+                "*       *",
+                "*       *",
+                "*********",
+                "*********"
+        ));
 
         // Line 5
-        System.out.println(
-                "*       *" + "  " +
-                        "*       *" + "  " +
-                        "*        " + "  " +
-                        "        " + "*"
-        );
+        System.out.println(String.join("  ",
+                "*       *",
+                "*       *",
+                "*        ",
+                "*        "
+        ));
 
         // Line 6
-        System.out.println(
-                "*       *" + "  " +
-                        "*       *" + "  " +
-                        "*" + "  " +
-                        "                " + "*"
-        );
+        System.out.println(String.join("  ",
+                "*       *",
+                "*       *",
+                "*        ",
+                "*        "
+        ));
 
         // Line 7
-        System.out.println(
-                "*********" + "  " +
-                        "*********" + "  " +
-                        "*        " + "  " +
-                        "*********"
-        );
+        System.out.println(String.join("  ",
+                "*********",
+                "*********",
+                "*        ",
+                "*********"
+        ));
     }
 }
-
-
