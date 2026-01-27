@@ -1,81 +1,85 @@
 /**
- * OOPSBannerApp UC4 – Banner Display Application using String Array and Loop
+ * OOPSBannerApp UC5 - OOPS Banner Display Application using Inline Array Initialization
  *
- * Version History:
- *  - v1.0: Printed "OOPS" as plain text.
- *  - v2.0: Rendered "OOPS" as a banner using string concatenation (+).
- *  - v3.0: Refactored banner rendering using String.join().
- *  - v4.0: Refactored banner rendering using a String array and loop
- *          to eliminate repetitive print statements and improve maintainability.
- *
- * This class demonstrates how to store banner lines in a String array
- * and print them using a loop for better code organization and reusability.
+ * This class demonstrates inline initialization of a String array
+ * combined with String.join() to efficiently render a banner.
  *
  * @author Developer
- * @version 4.0
+ * @version 5.0
  */
 public class OOPSBannerApp {
 
+    /*
+        Main method to run banner display
+        1. Creating and initializing string array inline.
+        2. Constructing banner lines using String.join().
+        3. Using enhanced for-loop to print each line.
+    */
     public static void main(String[] args) {
 
-        // Step 1: Create a String array to store all 7 banner lines
-        String[] bannerLines = new String[7];
+        // UC5: Inline array initialization with String.join()
+        String[] lines = {
 
-        // Step 2: Populate the array using String.join()
+                // Line 1
+                String.join("  ",
+                        "*********",
+                        "*********",
+                        "*********",
+                        "*********"
+                ),
 
-        bannerLines[0] = String.join("  ",
-                "*********",
-                "*********",
-                "*********",
-                "*********"
-        );
+                // Line 2
+                String.join("  ",
+                        "*       *",
+                        "*       *",
+                        "*       *",
+                        "*        "
+                ),
 
-        bannerLines[1] = String.join("  ",
-                "*       *",
-                "*       *",
-                "*       *",
-                "*        "
-        );
+                // Line 3
+                String.join("  ",
+                        "*       *",
+                        "*       *",
+                        "*       *",
+                        "*        "
+                ),
 
-        bannerLines[2] = String.join("  ",
-                "*       *",
-                "*       *",
-                "*       *",
-                "*        "
-        );
+                // Line 4
+                String.join("  ",
+                        "*       *",
+                        "*       *",
+                        "*********",
+                        "*********"
+                ),
 
-        bannerLines[3] = String.join("  ",
-                "*       *",
-                "*       *",
-                "*********",
-                "*********"
-        );
+                // Line 5
+                String.join("  ",
+                        "*       *",
+                        "*       *",
+                        "*        ",
+                        "*        "
+                ),
 
-        bannerLines[4] = String.join("  ",
-                "*       *",
-                "*       *",
-                "*        ",
-                "*        "
-        );
+                // Line 6
+                String.join("  ",
+                        "*       *",
+                        "*       *",
+                        "*        ",
+                        "*        "
+                ),
 
-        bannerLines[5] = String.join("  ",
-                "*       *",
-                "*       *",
-                "*        ",
-                "*        "
-        );
+                // Line 7
+                String.join("  ",
+                        "*********",
+                        "*********",
+                        "*        ",
+                        "*********"
+                )
+        };
 
-        bannerLines[6] = String.join("  ",
-                "*********",
-                "*********",
-                "*        ",
-                "*********"
-        );
-
-        // Step 3: Use enhanced for loop to print each banner line
-        for (String line : bannerLines) {
+        // Print banner using enhanced for loop
+        for (String line : lines) {
             System.out.println(line);
         }
     }
 }
-fg
